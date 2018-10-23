@@ -10,7 +10,7 @@ args = parser.parse_args()
 normalize = bool(args.n)
 
 # Get all available items
-file = open("../xyz.data", "r")
+file = open("xyz.data", "r")
 lines: typing.List[str] = file.readlines()
 
 # Removing special characters
@@ -51,7 +51,7 @@ items = sorted(set(" ".join(list(map(lambda x: " ".join(x), data))).split(" ")))
 
 # running alg
 itemsets, rules = apriori(data,
-                          min_confidence=0.3,  # Min chance of B when A
+                          min_confidence=0.5,  # Min chance of B when A
                           min_support=0.02)  # Min % of transactions containing item
 
 for rule in sorted(rules, key=lambda r: r.lift):
